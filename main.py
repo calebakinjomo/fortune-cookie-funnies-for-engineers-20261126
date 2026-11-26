@@ -10,6 +10,8 @@ import os
 FORTUNE = "You will ship code that passes every test — because the tests never ran."
 
 def main() -> None:
+    if not FORTUNE or len(FORTUNE) > 120:
+        raise ValueError("fortune must be 1-120 characters")
     os.makedirs("/output", exist_ok=True)
     with open("/output/entry.txt", "w", encoding="utf-8") as f:
         f.write(FORTUNE + "\n")
